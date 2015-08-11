@@ -1,4 +1,6 @@
 var express = require('express');
+var ssi = require("ssi");
+var fs = require('fs');
 var http = require('http');
 var path = require('path');
 var url = require('url');
@@ -6,6 +8,7 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var bytes = require('bytes');
 var getport = require('getport');
+var parser = new ssi(__dirname, '', '');
 
 var rootPath = process.cwd();
 
@@ -26,7 +29,12 @@ module.exports = function(port, dir, www, base) {
       'Expires': 0
     });
 
-    next();
+    var filename = __dirname + (req.path == '/' ? '/index.html' : req.path);
+    if(fs.existsSync(filename)) {
+      res.send(parser.parse(filename, fs.readFileSync(filename, {encoding: 'utf8'})).contents); 
+    } else {
+      next();
+    }
   });
 
   // parse application/x-www-form-urlencoded

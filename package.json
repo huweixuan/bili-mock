@@ -1,31 +1,31 @@
 {
-  "name": "imock",
-  "version": "3.2.1",
-  "description": "restful mock server for front-end developer",
+  "name": "bili-mock",
+  "version": "0.1.0",
+  "description": "restful mock server for front-end developer, fork from imock",
   "main": "app.js",
   "bin": {
-    "imock": "./bin/imock"
+    "bili-mock": "./bin/bili-mock"
   },
   "scripts": {
     "test": "mocha test/handler.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/dmccer/imock.git"
+    "url": "https://github.com/huweixuan/bili-mock.git"
   },
   "keywords": [
     "mock",
     "api"
   ],
   "author": {
-    "name": "yunhua.xiao",
-    "email": "yunhua.xiao@dianping.com"
+    "name": "huweixuan",
+    "email": "269549461@qq.com"
   },
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dmccer/imock/issues"
+    "url": "https://github.com/huweixuan/bili-mock/issues"
   },
-  "homepage": "https://github.com/dmccer/imock",
+  "homepage": "https://github.com/huweixuan/bili-mock",
   "dependencies": {
     "body-parser": "^1.6.6",
     "bytes": "^1.0.0",
@@ -34,6 +34,7 @@
     "express": "^3.16.8",
     "getport": "^0.1.0",
     "morgan": "^1.3.0",
+    "ssi": "^0.1.5",
     "underscore": "^1.7.0"
   },
   "devDependencies": {
