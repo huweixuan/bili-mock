@@ -8,14 +8,17 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var bytes = require('bytes');
 var getport = require('getport');
-var parser = new ssi(__dirname, '', '');
-
 var rootPath = process.cwd();
+
+String.prototype.endsWith = function(suffix) {
+    return this.indexOf(suffix, this.length - suffix.length) !== -1;
+};
 
 module.exports = function(port, dir, www, base) {
   var app = express();
 
   var static = path.join(process.cwd(), www);
+  var parser = new ssi(static, '', '');
 
   app.set('views', static);
   app.engine('html', require('ejs').renderFile);
@@ -29,8 +32,8 @@ module.exports = function(port, dir, www, base) {
       'Expires': 0
     });
 
-    var filename = __dirname + (req.path == '/' ? '/index.html' : req.path);
-    if(fs.existsSync(filename)) {
+    var filename = static + (req.path == '/' ? '/index.html' : req.path);
+    if(fs.existsSync(filename) && filename.endsWith('.html')) {
       res.send(parser.parse(filename, fs.readFileSync(filename, {encoding: 'utf8'})).contents); 
     } else {
       next();
