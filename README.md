@@ -1,21 +1,16 @@
-# imock 
-restful mock server for front-end developer
-
-[![NPM](https://nodei.co/npm/imock.png)](https://nodei.co/npm/imock/)
-
-[![Build Status](https://travis-ci.org/dmccer/imock.svg)](https://travis-ci.org/dmccer/imock)
-[![Coverage Status](https://coveralls.io/repos/dmccer/imock/badge.png?branch=master)](https://coveralls.io/r/dmccer/imock?branch=master)
+# bili-mock 
+restful mock server for front-end developer, fork from imock, support ssi
 
 ## Install
 
 ```bash
-$ npm install imock -g
+$ npm install bili-mock -g
 ```
 
 ## Usage
 
 ```bash
-$ imock -j json -b api
+$ bili-mock -j json -b api
 ```
 
 ## Options
