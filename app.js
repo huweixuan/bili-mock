@@ -73,7 +73,7 @@ module.exports = function(port, dir, www, base, RESTful) {
     app.all(url.resolve(base, '*'), function(req, res, next) {
       var handler = RESTful ? './lib/restful-handler' : './lib/handler';
       if (req.xhr) {
-        return require('./lib/handler').on(req, res, rootPath, base);
+        return require(handler).on(req, res, rootPath, base);
       }
 
       next();
