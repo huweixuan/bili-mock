@@ -17,6 +17,7 @@ function help() {
     console.log('    -w --www www 文件目录');
     console.log('    -h --help 帮助文档');
     console.log('    -v --version 当前版本号');
+    console.log('    -r --RESTful 支持RESTful API 斜杠用横线代替');
     console.log('');
 }
 
@@ -26,9 +27,10 @@ program
     .option('-b, --base [base]', 'mock 请求的 base path')
     .option('-p, --port [port]', '端口号')
     .option('-w, --www [www]', 'www 文件目录')
+    .option('-R, --RESTful', '支持RESTful API 斜杠用横线代替')
     .on('--help', help)
     .on('-h', help);
 
 program.parse(process.argv);
 
-mocker(program.port || defaultPort, program.json, program.www || defaultWww, program.base);
+mocker(program.port || defaultPort, program.json, program.www || defaultWww, program.base, program.RESTful || false);

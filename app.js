@@ -11,10 +11,10 @@ var getport = require('getport');
 var rootPath = process.cwd();
 
 String.prototype.endsWith = function(suffix) {
-    return this.indexOf(suffix, this.length - suffix.length) !== -1;
+  return this.indexOf(suffix, this.length - suffix.length) !== -1;
 };
 
-module.exports = function(port, dir, www, base) {
+module.exports = function(port, dir, www, base, RESTful) {
   var app = express();
 
   var static = path.join(process.cwd(), www);
@@ -71,6 +71,7 @@ module.exports = function(port, dir, www, base) {
     base = url.resolve('/', base);
 
     app.all(url.resolve(base, '*'), function(req, res, next) {
+      var handler = RESTful ? './lib/restful-handler' : './lib/handler';
       if (req.xhr) {
         return require('./lib/handler').on(req, res, rootPath, base);
       }
@@ -91,8 +92,7 @@ module.exports = function(port, dir, www, base) {
   // development only
   if ('development' === app.get('env')) {
     app.use(express.errorHandler());
-  }
-  
+  } 
 
   getport(port, function(e, p) {
     if (e) {

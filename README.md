@@ -1,5 +1,5 @@
 # bili-mock 
-restful mock server for front-end developer, fork from imock, support ssi
+mock server for front-end developer, fork from imock, support ssi and restful api
 
 ## Install
 
@@ -22,6 +22,8 @@ $ bili-mock -j json -b api
 -p --port 可选，指定 mock server 端口号，默认 3000
 
 -w --www 可选，指定静态服务器根目录(express.directory)，默认当前目录 
+
+-R --RESTful 可选，支持RESTful API，请求中的斜杠需要对于文件名中的横杠（如/api/shop/1234 -> api-shop-id.js）
 
 
 注: 
