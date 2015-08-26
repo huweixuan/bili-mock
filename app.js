@@ -34,7 +34,7 @@ module.exports = function(port, dir, www, base, RESTful) {
 
     var filename = static + (req.path == '/' ? '/index.html' : req.path);
     if(fs.existsSync(filename) && filename.endsWith('.html')) {
-      res.send(parser.parse(filename, fs.readFileSync(filename, {encoding: 'utf8'})).contents); 
+      res.send(parser.parse(filename, fs.readFileSync(filename, {encoding: 'utf8'}), {'DOMAIN': ''}).contents); 
     } else {
       next();
     }
